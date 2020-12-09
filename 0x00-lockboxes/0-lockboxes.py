@@ -16,8 +16,6 @@ def canUnlockAll(boxes):
         if stack:
             node = stack[-1]
             stack.pop()
-        else:
-            break
     if len(nodeSeen) == len(boxes):
         return True
     else:
