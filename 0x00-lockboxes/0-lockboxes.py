@@ -11,7 +11,7 @@ def canUnlockAll(boxes):
     while node not in nodeSeen and node is not None:
         nodeSeen.append(node)
         for key in boxes[node]:
-            if key not in nodeSeen:
+            if key not in nodeSeen and key < len(boxes):
                 stack.append(key)
         if stack:
             node = stack[-1]
