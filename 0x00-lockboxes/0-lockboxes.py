@@ -13,10 +13,8 @@ def canUnlockAll(boxes):
         for key in boxes[node]:
             if key not in nodeSeen:
                 stack.append(key)
-        print("stack ----> ", stack)
         if stack:
             node = stack[-1]
-            print("node ---->", node)
             stack.pop()
         else:
             break
