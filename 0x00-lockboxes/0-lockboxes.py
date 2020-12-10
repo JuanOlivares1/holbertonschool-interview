@@ -9,7 +9,7 @@ def canUnlockAll(boxes):
     node = 0
 
     if not boxes:
-        return False
+        return True
 
     while node not in nodeSeen and node is not None:
         nodeSeen.append(node)
