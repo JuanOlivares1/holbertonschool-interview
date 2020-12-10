@@ -8,6 +8,9 @@ def canUnlockAll(boxes):
     nodeSeen = []
     node = 0
 
+    if not boxes:
+        return False
+
     while node not in nodeSeen and node is not None:
         nodeSeen.append(node)
         for key in boxes[node]:
