@@ -2,7 +2,7 @@
 #include "lists.h"
 
 /**
- * insert_node - Function that inserts a new node in a sorted singly linked list
+ * insert_node - Function that inserts a new node in a sorted linked list
  * @head: Pointer to list's head
  * @number: Value for new node
  *
