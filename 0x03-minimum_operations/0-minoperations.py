@@ -1,11 +1,11 @@
 #!/usr/bin/python3
 """
-	Main file for testing
+    Main file for testing
 """
 
 
 def minOperations(n):
-    """	minOperations """
+    """ minOperations """
     i = 2
     a_list = []
 
