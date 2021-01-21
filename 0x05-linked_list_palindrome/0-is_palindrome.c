@@ -3,91 +3,38 @@
 #include "lists.h"
 
 /**
+ * palindrome_rec - finds by recursion if list is palindrome
+ * @left: pointer to head move forwards
+ * @right: pointer to head move backwards
+ * Return: 0 if is not palindrome, 1 if it is
+ */
+int palindrome_rec(listint_t** left, listint_t* right)
+{ 
+	int rtn;
+
+    	if (right == NULL) 
+        	return 1; 
+ 
+    	if (palindrome_rec(left, right->next) == 0) 
+        	return 0;
+ 
+    	
+    	if (right->n == (*left)->n)
+	    	rtn = 1;
+	else
+		rtn = 0;
+ 
+    	*left = (*left)->next; 
+ 
+    	return rtn; 
+} 
+ 
+/**
  * is_palindrome - find if a linked list is palindrome
  * @head: pointer to head of list
  * Return: 0 if is not palindrome, 1 if it is
  */
 int is_palindrome(listint_t **head)
 {
-	int rtn = 0;
-	listint_t *spointer = *head;
-	listint_t *fpointer = *head;
-	listint_t *prev_spointer = *head;
-	listint_t *half, *mid;
-
-	if (head != NULL && (*head)->next != NULL)
-	{
-		while (fpointer != NULL && fpointer->next != NULL)
-		{
-			fpointer = fpointer->next->next;
-			prev_spointer = spointer;
-            		spointer = spointer->next;
-		}
-
-		if (fpointer != NULL)
-		{
-			mid = spointer;
-			spointer = spointer->next;
-		}
-		half = spointer;
-		prev_spointer->next = NULL;
-		reverse(&half);
-		rtn = is_equal(*head, half);
-		reverse(&half);
-
-		if (mid != NULL) { 
-            		prev_spointer->next = mid; 
-            		mid->next = half; 
-        	} else
-            		prev_spointer->next = half; 
-    	}
-	return (rtn);
-}
-
-/**
- * is_equal - tells if two singly linked lists have the same data
- * @h1: pointer to head of list
- * @h2: pointer to head of list
- * Return: 0 if are the same, 1 if doesn't
- */
-int is_equal (listint_t *head1, listint_t *head2)
-{
-	listint_t *h1 = head1;
-	listint_t *h2 = head2;
-
-	while (h1 && h2) { 
-        	if (h1->n == h2->n) 
-		{ 
-         		h1 = h1->next; 
-            		h2 = h2->next; 
-        	} else 
-		{
-			return 0; 
-		}
-    	} 
- 
-    	if (h1 == NULL && h2 == NULL) 
-        	return 1; 
-	
-	return (0);
-}
-
-/**
- * reverse - a singly linked list
- * @head: pointer to head of list
- */
-void reverse (listint_t **head)
-{
-	listint_t *prev, *current, *next;
-
-	prev = NULL;
-	current = *head;
-	while (current != NULL) 
-	{ 
-	        next = current->next;
-        	current->next = prev;
-        	prev = current;
-        	current = next;
-    	}
-    *head = prev;
+    return (palindrome_rec(head, *head));
 }
