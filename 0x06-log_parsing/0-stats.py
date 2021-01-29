@@ -1,5 +1,7 @@
 #!/usr/bin/python3
+""" Log parsing """
 import sys
+
 
 ssize = 0
 sc = {"200": 0, "301": 0, "400": 0, "401": 0,
