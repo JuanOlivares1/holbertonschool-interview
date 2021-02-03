@@ -4,13 +4,13 @@
  * check_cycle - check if linked list has a cycle.
  * @list: head of list
  *
- * Return: Always 0.
+ * Return: 0 if there is no cycle, 1 if there is a cycle.
  */
 int check_cycle(listint_t *list)
 {
     listint_t *tortoise, *hare;
     
-    if (list == NULL || list->next == NULL)
+    if (list == NULL)
         return (0);
 
     tortoise = list;
