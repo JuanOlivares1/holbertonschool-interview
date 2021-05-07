@@ -45,10 +45,9 @@ queue_t *enqueue(queue_t **heap_q, heap_t *node)
 		return (new);
 	}
 
-	//traverse the queue till find tail
+	/* traverse the queue till find tail */
 	while (current->next)
 	current = current->next;
-	
 	current->next = new;
 	return (new);
 }
@@ -61,7 +60,7 @@ queue_t *enqueue(queue_t **heap_q, heap_t *node)
 void dequeue(queue_t **heap_q)
 {
 	queue_t *temp = *heap_q;
-    
+
 	*heap_q = (*heap_q)->next;
 	free(temp);
 }
@@ -88,7 +87,7 @@ heap_t *lvl_order_travrsl(heap_t **root, int value)
 		if (current->left)
 		{
 			if (!enqueue(&heap_q, current->left))
-				return (NULL);   
+				return (NULL);
 		} else if (!new)
 		{
 			new = binary_tree_node(current, value);
@@ -100,7 +99,7 @@ heap_t *lvl_order_travrsl(heap_t **root, int value)
 		if (current->right)
 		{
 			if (!enqueue(&heap_q, current->right))
-				return (NULL);   
+				return (NULL);
 		} else if (!new)
 		{
 			new = binary_tree_node(current, value);
