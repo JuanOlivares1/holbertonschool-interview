@@ -9,47 +9,48 @@
  */
 heap_t *heap_insert(heap_t **root, int value)
 {
-    heap_t *new;
+	heap_t *new;
 
-    if (!*root)
-    {
-        new = binary_tree_node(NULL, value);
-        *root = new;
-        return (new);
-    }
-    new = lvl_order_travrsl(root, value);
-    return (swap(new));
+	if (!*root)
+	{
+	new = binary_tree_node(NULL, value);
+	*root = new;
+		return (new);
+	}
+	new = lvl_order_travrsl(root, value);
+	return (swap(new));
 }
 
 /**
  * enqueue - insert node into queue
  * @heap_q: pointer to queue
+ * @node: pointer to node
  *
  * Return: pointer to new node or NULL if fails
  */
 queue_t *enqueue(queue_t **heap_q, heap_t *node)
 {
-    queue_t *current = *heap_q;
-    queue_t *new;
+	queue_t *current = *heap_q;
+	queue_t *new;
 
-    new = malloc(sizeof(queue_t));
-    if (!new)
-        return (NULL);
-    new->node = node;
-    new->next = NULL;
+	new = malloc(sizeof(queue_t));
+	if (!new)
+		return (NULL);
+	new->node = node;
+	new->next = NULL;
 
-    if (!current)
-    {
-        *heap_q = new;
-        return (new);
-    }
+	if (!current)
+	{
+		*heap_q = new;
+		return (new);
+	}
 
-    //traverse the queue till find tail
-    while (current->next)
-        current = current->next;
-    
-    current->next = new;
-    return (new);
+	//traverse the queue till find tail
+	while (current->next)
+	current = current->next;
+	
+	current->next = new;
+	return (new);
 }
 
 /**
@@ -59,79 +60,80 @@ queue_t *enqueue(queue_t **heap_q, heap_t *node)
  */
 void dequeue(queue_t **heap_q)
 {
-    queue_t *temp = *heap_q;
+	queue_t *temp = *heap_q;
     
-    *heap_q = (*heap_q)->next;
-    free(temp);
+	*heap_q = (*heap_q)->next;
+	free(temp);
 }
 
 /**
  * lvl_order_travrsl - level order traversal of complete BST
- * @heap_q: pointer to queue
+ * @root: pointer to root
+ * @value: value of new node
  *
  * Return: pointer to insert-node of heap
  */
 heap_t *lvl_order_travrsl(heap_t **root, int value)
 {
-    queue_t *heap_q = NULL;
-    heap_t *current;
-    heap_t *new = NULL;
+	queue_t *heap_q = NULL;
+	heap_t *current;
+	heap_t *new = NULL;
 
-    if (!enqueue(&heap_q, *root))
-        return (NULL);
+	if (!enqueue(&heap_q, *root))
+		return (NULL);
 
-    while (heap_q)
-    {
-        current = heap_q->node;
-        if (current->left)
-        {
-            if (!enqueue(&heap_q, current->left))
-                return (NULL);   
-        } else if (!new)
-        {
-            new = binary_tree_node(current, value);
-            if (!new)
-                return (NULL);
-            current->left = new;
-        }
+	while (heap_q)
+	{
+		current = heap_q->node;
+		if (current->left)
+		{
+			if (!enqueue(&heap_q, current->left))
+				return (NULL);   
+		} else if (!new)
+		{
+			new = binary_tree_node(current, value);
+			if (!new)
+				return (NULL);
+			current->left = new;
+		}
 
-        if (current->right)
-        {
-            if (!enqueue(&heap_q, current->right))
-                return (NULL);   
-        } else if (!new)
-        {
-            new = binary_tree_node(current, value);
-            if (!new)
-                return (NULL);
-            current->right = new;
-        }
-        dequeue(&heap_q);
-    }
-    return (new);
+		if (current->right)
+		{
+			if (!enqueue(&heap_q, current->right))
+				return (NULL);   
+		} else if (!new)
+		{
+			new = binary_tree_node(current, value);
+			if (!new)
+				return (NULL);
+			current->right = new;
+		}
+		dequeue(&heap_q);
+	}
+	return (new);
 }
 
 /**
  * swap - swap nodes to order the heap
- * @new: pointer to new node
+ * @node: pointer to new node
  *
  * Return: pointer to node in correct position
  */
 heap_t *swap(heap_t *node)
 {
-    heap_t *swapper = node;
-    int aux;
+	heap_t *swapper = node;
+	int aux;
 
-    while (swapper->parent)
-    {
-        if (swapper->n > swapper->parent->n)
-        {
-            aux = swapper->parent->n;
-            swapper->parent->n = swapper->n;
-            swapper->n = aux;
-            node = node->parent;
-        }
-        swapper = swapper->parent;
-    }
-    return (node);
+	while (swapper->parent)
+	{
+		if (swapper->n > swapper->parent->n)
+		{
+			aux = swapper->parent->n;
+			swapper->parent->n = swapper->n;
+			swapper->n = aux;
+			node = node->parent;
+		}
+		swapper = swapper->parent;
+	}
+	return (node);
 }

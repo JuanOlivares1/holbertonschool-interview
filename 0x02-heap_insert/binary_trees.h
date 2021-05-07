@@ -14,15 +14,15 @@
  */
 struct binary_tree_s
 {
-        int n;
-        struct binary_tree_s *parent;
-        struct binary_tree_s *left;
-        struct binary_tree_s *right;
+	int n;
+	struct binary_tree_s *parent;
+	struct binary_tree_s *left;
+	struct binary_tree_s *right;
 };
 struct queue_s
 {
-        struct binary_tree_s *node;
-        struct queue_s *next;
+	struct binary_tree_s *node;
+	struct queue_s *next;
 };
 
 typedef struct binary_tree_s binary_tree_t;
