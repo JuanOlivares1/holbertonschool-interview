@@ -13,8 +13,8 @@ heap_t *heap_insert(heap_t **root, int value)
 
 	if (!*root)
 	{
-	new = binary_tree_node(NULL, value);
-	*root = new;
+		new = binary_tree_node(NULL, value);
+		*root = new;
 		return (new);
 	}
 	new = lvl_order_travrsl(root, value);
