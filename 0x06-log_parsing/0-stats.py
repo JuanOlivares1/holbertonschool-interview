@@ -14,7 +14,7 @@ try:
         t_size += int(splt[-1])
         if count % 10 == 0:
             print("File size: {}".format(t_size))
-            for key, value in s_codes.items():
+            for key, value in sorted(s_codes.items()):
                 if value > 0:
                     print("{}: {}".format(key, value))
 finally:
