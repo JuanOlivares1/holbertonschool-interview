@@ -5,7 +5,7 @@
 def validUTF8(data):
     """
     Args:
-        data (list): data set of characters 
+        data (list): data set of characters
     """
     t_bytes = 0
 
@@ -28,4 +28,3 @@ def validUTF8(data):
     if t_bytes != 0:
         return False
     return True
- 
