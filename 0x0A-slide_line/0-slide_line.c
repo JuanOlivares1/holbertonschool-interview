@@ -57,7 +57,7 @@ int slide_left(int *line, size_t size)
 				}
 			}
 		}
-		}
+	}
 	return (1);
 }
 
