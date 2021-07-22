@@ -7,6 +7,7 @@ def n_queens(n):
     """ func n queens """
     print(board)
 
+
 if __name__ == "__main__":
     if not len(sys.argv) == 2:
         print("Usage: nqueens N")
