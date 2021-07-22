@@ -3,7 +3,7 @@
 import sys
 
 
-def n_queens(n):
+def n_queens(board, n):
     """ func n queens """
     print(board)
 
@@ -24,4 +24,4 @@ if __name__ == "__main__":
         sys.exit(1)
 
     board = [[0 for i in range(n)] for j in range(n)]
-    n_queens(board)
+    n_queens(board, n)
