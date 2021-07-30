@@ -8,73 +8,34 @@
  */
 avl_t *sorted_array_to_avl(int *array, size_t size)
 {
-	int len = size;
-	int mid = (len - 1) / 2;
-	avl_t *root, *temp, *extra;
-
-	root = malloc(sizeof(avl_t));
-	if (root == NULL)
-		return (NULL);
-
-	if (len == 1)
-	{
-		root->n = array[len];
-		return (root);
-	}
-
-	root->n = array[mid];
-	root->left = Tree_builder(root, array, mid);
-	root->right = Tree_builder(root, &array[mid + 1], mid);
-
-	if (len % 2 == 0)
-	{
-		temp = root;
-		while (temp->right != NULL)
-		{
-			temp = temp->right;
-		}
-		extra = malloc(sizeof(avl_t));
-		if (root == NULL)
-			return (NULL);
-		extra->n = array[len - 1];
-		extra->parent = temp;
-		temp->right = extra;
-	}
-	return (root);
+	return (Tree_builder(NULL, array, 0, size - 1));
 }
 
 /**
  * Tree_builder - AVL binary tree
  *
- * @root: pointer to root node
+ * @parentnode: pointer to root node
  * @array: pointer to array of items
- * @endidx: end inde of array
+ * @start: start of array
+ * @end: number of items between start and end
  */
-avl_t *Tree_builder(avl_t *root, int *array, int endidx)
+avl_t *Tree_builder(avl_t *parent, int *array, int start, int end)
 {
-	int mid = endidx / 2;
+	int mid;
 	avl_t *new;
 
-	new = malloc(sizeof(avl_t));
-	if (new == NULL)
+	if (start > end)
 		return (NULL);
 
-	if (endidx == 1)
-	{
-		if (array[0] == root->n)
-			return (NULL);
+	mid = (start + end) / 2;
 
-		new->n = array[0];
-		new->parent = root;
-		new->left = NULL;
-		new->right = NULL;
-		return (new);
-	}
-
+	new = malloc(sizeof(avl_t));
+	if (!new)
+		return (NULL);
 	new->n = array[mid];
-	new->parent = root;
-	new->left = Tree_builder(new, array, mid);
-	new->right = Tree_builder(new, &array[mid + 1], mid);
+	new->parent = parent;
+	new->left = Tree_builder(new, array, start, mid - 1);
+	new->right = Tree_builder(new, array, mid + 1, end);
 
 	return (new);
 }
