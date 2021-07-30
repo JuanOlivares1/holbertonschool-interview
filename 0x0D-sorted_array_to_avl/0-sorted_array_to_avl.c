@@ -5,6 +5,8 @@
  *
  * @array: pointer to array
  * @size: size of array
+ *
+ * Return: pointer to tree
  */
 avl_t *sorted_array_to_avl(int *array, size_t size)
 {
@@ -17,10 +19,12 @@ avl_t *sorted_array_to_avl(int *array, size_t size)
 /**
  * Tree_builder - AVL binary tree
  *
- * @parentnode: pointer to root node
+ * @parent: pointer to root node
  * @array: pointer to array of items
  * @start: start of array
  * @end: number of items between start and end
+ *
+ * Return: pointer to tree
  */
 avl_t *Tree_builder(avl_t *parent, int *array, int start, int end)
 {
