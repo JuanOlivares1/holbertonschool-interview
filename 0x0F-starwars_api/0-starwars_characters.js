@@ -14,10 +14,10 @@ function getData (url) {
 
 async function getNames () {
   const res = await getData(url);
-  res.characters.forEach(async function (character) {
-    const chrtr = await getData(character);
-    console.log(chrtr.name);
-  });
+  for (let i = 0; i < res.characters.length; i++) {
+    const char = await getData(res.characters[i]);
+    console.log(char.name);
+  }
 }
 
 getNames();
