@@ -15,7 +15,7 @@ function getData (url) {
 async function getNames () {
   const res = await getData(url);
   for (let i = 0; i < res.characters.length; i++) {
-    let char = await getData(res.characters[i]);
+    const char = await getData(res.characters[i]);
     console.log(char.name);
   }
 }
