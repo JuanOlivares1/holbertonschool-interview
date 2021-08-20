@@ -46,5 +46,4 @@ def pour_water(well):
             uw_block += i
 
     water += (depth * width) - uw_block
-    print("---> {}".format(water))
     return water
