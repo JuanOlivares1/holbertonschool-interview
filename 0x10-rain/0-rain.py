@@ -11,6 +11,7 @@ def rain(walls):
     if not walls:
         return water
 
+    tmp = 0
     aux = -1
     for i in range(len(walls)):
         if walls[i] > 0:
@@ -21,10 +22,12 @@ def rain(walls):
                 while walls[j] == 0:
                     j += 1
                 if walls[j] == walls[aux]:
-                    water = pour_water(walls[aux:j + 1])
+                    water += pour_water(walls[aux:j + 1])
+                    water -= tmp
                     aux = -1
                     continue
                 water += pour_water(walls[i:j + 1])
+                tmp = water
             except IndexError:
                 break
     return water
@@ -43,4 +46,5 @@ def pour_water(well):
             uw_block += i
 
     water += (depth * width) - uw_block
+    print("---> {}".format(water))
     return water
