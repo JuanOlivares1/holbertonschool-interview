@@ -2,6 +2,7 @@
 """ Module - Rain
 """
 
+
 def rain(walls):
     """ calculates water
     """
@@ -26,8 +27,8 @@ def rain(walls):
                 water += pour_water(walls[i:j + 1])
             except IndexError:
                 break
-
     return water
+
 
 def pour_water(well):
     """ calculates water btw 2 walls
@@ -40,6 +41,6 @@ def pour_water(well):
     for i in (well):
         if i > 0 and i < depth:
             uw_block += i
-    
+
     water += (depth * width) - uw_block
     return water
