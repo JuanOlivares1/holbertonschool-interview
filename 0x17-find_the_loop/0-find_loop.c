@@ -25,11 +25,13 @@ listint_t *start_of_loop(listint_t *first, listint_t *second)
  */
 listint_t *find_listint_loop(listint_t *head)
 {
-	listint_t *tortoise = head->next;
-	listint_t *hare = head->next->next;
+	listint_t *tortoise, *hare;
 
 	if (!head || !head->next)
 		return (0);
+
+	tortoise = head->next;
+	hare = head->next->next;
 
 	while (tortoise && hare && hare->next)
 	{
