@@ -18,7 +18,7 @@ listint_t *start_of_loop(listint_t *first, listint_t *second)
 
 
 /**
- * check_cycle - check if linked list has a cycle.
+ * find_listint_loop - check if linked list has a cycle.
  * @head: head of list
  *
  * Return: 0 if there is no cycle, node start of loop.
