@@ -36,7 +36,7 @@ listint_t *find_listint_loop(listint_t *head)
 		tortoise = tortoise->next;
 		hare = hare->next->next;
 		if (tortoise == hare)
-			return (start_of_loop(tortoise, hare));
+			return (start_of_loop(head, hare));
 	}
 	return (0);
 }
